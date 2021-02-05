@@ -1,0 +1,38 @@
+name: terraform apply
+
+on:
+  workflow_dispatch:
+    inputs:
+      command:
+        required: true
+        description: terraform command
+        default: plan
+
+env:
+  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: pCYSl5EDgo/cat@master
+        id: tf_version
+        with:
+          path: .terraform-version
+
+      - name: terraform init
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ steps.tf_version.outputs.text }}
+          tf_actions_subcommand: init
+          tf_actions_working_dir: '.'
+
+      - name: terraform ${{ github.event.inputs.command }}
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ steps.tf_version.outputs.text }}
+          tf_actions_subcommand: ${{ github.event.inputs.command }}
+          tf_actions_working_dir: '.'
