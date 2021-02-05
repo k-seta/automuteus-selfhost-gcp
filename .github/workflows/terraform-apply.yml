@@ -22,6 +22,7 @@ jobs:
         id: tf_version
         with:
           path: .terraform-version
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
