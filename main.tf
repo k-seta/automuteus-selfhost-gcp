@@ -16,7 +16,7 @@ resource "google_compute_instance" "default" {
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-9"
+      image = "projects/cos-cloud/global/images/family/cos-stable"
     }
   }
 
