@@ -35,6 +35,7 @@ resource "google_compute_instance" "default" {
 
   network_interface {
     network = "default"
+    access_config {}
   }
 
   metadata_startup_script = "echo 'hello world' > /test.txt"
