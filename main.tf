@@ -10,6 +10,17 @@ terraform {
   }
 }
 
+resource "google_compute_firewall" "allow_http" {
+  name    = "allow-http-rule"
+  network = "default"
+  allow {
+    ports    = ["80"]
+    protocol = "tcp"
+  }
+  target_tags = ["allow-http"]
+  priority    = 1000
+}
+
 resource "google_compute_instance" "default" {
   name         = "amongmuteus"
   machine_type = "f1-micro"
@@ -23,5 +34,8 @@ resource "google_compute_instance" "default" {
   network_interface {
     network = "default"
   }
+
+
+
   metadata_startup_script = "echo 'hello world' > /test.txt"
 }
