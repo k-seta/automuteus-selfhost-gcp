@@ -12,7 +12,7 @@ env:
   GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
 jobs:
-  apply:
+  terraform:
     runs-on: ubuntu-latest
 
     steps:
