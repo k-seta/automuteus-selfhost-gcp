@@ -10,6 +10,8 @@ on:
 
 env:
   GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+  TF_VAR_DISCORD_BOT_TOKEN: ${{ secrets.TF_VAR_DISCORD_BOT_TOKEN }}
+
 
 jobs:
   terraform:
