@@ -21,22 +21,11 @@ resource "google_compute_firewall" "allow_http" {
   priority    = 1000
 }
 
-resource "google_compute_firewall" "allow_https" {
-  name    = "allow-https-rule"
-  network = "default"
-  allow {
-    ports    = ["443"]
-    protocol = "tcp"
-  }
-  target_tags = ["allow-https"]
-  priority    = 1000
-}
-
 resource "google_compute_instance" "default" {
   name         = "amongmuteus"
   machine_type = "f1-micro"
 
-  tags = ["allow-http", "allow-https"]
+  tags = ["allow-http"]
 
   boot_disk {
     initialize_params {
