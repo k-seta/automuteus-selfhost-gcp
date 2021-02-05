@@ -12,7 +12,7 @@ export DISCORD_BOT_TOKEN=$(curl -H "Metadata-Flavor: Google" 'http://metadata.go
 cp sample.env .env
 sed -i -e 's/AUTOMUTEUS_TAG=/AUTOMUTEUS_TAG=6.11.0/g' .env
 sed -i -e 's/GALACTUS_TAG=/GALACTUS_TAG=2.4.1/g' .env
-sed -i -e "s/GALACTUS_HOST=/GALACTUS_HOST=${EXTERNAL_IP}/g" .env
+sed -i -e "s/GALACTUS_HOST=/GALACTUS_HOST=http://${EXTERNAL_IP}/g" .env
 sed -i -e 's/GALACTUS_EXTERNAL_PORT=/GALACTUS_EXTERNAL_PORT=80/g' .env
 sed -i -e "s/DISCORD_BOT_TOKEN=/DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}/g" .env
 
