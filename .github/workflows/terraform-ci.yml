@@ -28,9 +28,26 @@ jobs:
         with:
           terraform_version: ${{ steps.tf_version.outputs.text }}
 
-      - name: Terraform
+      - name: Terraform Plan
+        if: ${{ github.event.inputs.command == 'plan' }}
         working-directory: '.'
         run: |
           terraform init
           terraform validate
-          terraform ${{ github.event.inputs.command }}
+          terraform plan
+
+      - name: Terraform Apply
+        if: ${{ github.event.inputs.command == 'apply' }}
+        working-directory: '.'
+        run: |
+          terraform init
+          terraform validate
+          terraform apply -auto-approve
+
+      - name: Terraform Destroy
+        if: ${{ github.event.inputs.command == 'destroy' }}
+        working-directory: '.'
+        run: |
+          terraform init
+          terraform validate
+          terraform destroy -auto-approve
