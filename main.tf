@@ -36,6 +36,8 @@ resource "google_compute_instance" "default" {
   name         = "amongmuteus"
   machine_type = "f1-micro"
 
+  tags = ["allow-http", "allow-https"]
+
   boot_disk {
     initialize_params {
       image = "projects/cos-cloud/global/images/family/cos-stable"
@@ -45,8 +47,6 @@ resource "google_compute_instance" "default" {
   network_interface {
     network = "default"
   }
-
-
 
   metadata_startup_script = "echo 'hello world' > /test.txt"
 }
