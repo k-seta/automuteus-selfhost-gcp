@@ -1,6 +1,6 @@
 # Automuteus Selfhost on GCP
 ## Description
-AutoMuteUs を GCP の無料枠内でのセルフホスティングを Terraform + GitHub Actions で実現します。
+GCP の無料枠内での AutoMuteUs のセルフホスティングを Terraform + GitHub Actions で実現します。
 
 ## Preparation
 1. このリポジトリを `fork` します。
