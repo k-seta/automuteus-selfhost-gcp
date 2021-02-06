@@ -16,7 +16,7 @@ versioning: enabled
 life cycle: delete, num_newer_versions = 5
 ```
 6. [main.tf の project id](https://github.com/k-seta/automuteus-selfhost-gcp/blob/master/main.tf#L2) を自分のプロジェクトの値に変えて commit & push します。
-7. [main.tf の backend bucket の名前](https://github.com/k-seta/automuteus-selfhost-gcp/blob/master/main.tf#L9)を 5. で作ったものに変えて commit & push します。
+7. [main.tf の backend bucket の名前](https://github.com/k-seta/automuteus-selfhost-gcp/blob/master/main.tf#L9)を 5. で作った値に変えて commit & push します。
 8. おめでとうございます。
 
 ## Usage
