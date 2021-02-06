@@ -1,7 +1,7 @@
 #! /bin/sh
 
-mkdir -p /home/lavoce
-cd /home/lavoce
+mkdir -p /home
+cd /home
 
 git clone https://github.com/denverquane/automuteus.git
 cd automuteus
