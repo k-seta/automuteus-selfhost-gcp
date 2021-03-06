@@ -24,16 +24,11 @@ docker run -d \
     docker/compose:1.24.0 up
 
 # factorio
-sleep 30; mkdir -p /home/factorio/mods
+sleep 30; mkdir -p /home/factorio
+chown -R 845:845 /home/factorio
 
-export FACTORIO_MODS_URL=$(curl -H "Metadata-Flavor: Google" 'http://metadata.google.internal/computeMetadata/v1/instance/attributes/factorio-mods-url')
 export FACTORIO_USER=$(curl -H "Metadata-Flavor: Google" 'http://metadata.google.internal/computeMetadata/v1/instance/attributes/factorio-user')
 export FACTORIO_TOKEN=$(curl -H "Metadata-Flavor: Google" 'http://metadata.google.internal/computeMetadata/v1/instance/attributes/factorio-token')
-
-curl -L -o /home/factorio/mods/mods.zip ${FACTORIO_MODS_URL}
-docker run --rm -v /home/factorio/mods:/workspace busybox unzip /workspace/mods.zip -d /workspace
-rm /home/factorio/mods/mods.zip
-chown -R 845:845 /home/factorio
 
 docker run -d \
     -p 34197:34197/udp \
