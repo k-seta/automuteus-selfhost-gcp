@@ -51,6 +51,7 @@ resource "google_compute_instance" "default" {
 
   metadata = {
     discord-bot-token = var.DISCORD_BOT_TOKEN
+    factorio-mods-url = var.FACTORIO_MODS_URL
   }
 
   metadata_startup_script = file("startup.sh")
