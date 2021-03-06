@@ -1,9 +1,9 @@
 #! /bin/sh
 
 mkdir -p /home
-cd /home
 
 # AutoMuteUs
+cd /home
 git clone https://github.com/denverquane/automuteus.git
 
 export EXTERNAL_IP=$(curl -H "Metadata-Flavor: Google" 'http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip')
@@ -24,13 +24,16 @@ docker run -d \
     docker/compose:1.24.0 up
 
 # factorio
-sleep 30; mkdir -p /home/factorio
-chown -R 845:845 /home/factorio
+cd /home
+git clone https://github.com/k-seta/factorio.git
+
+export MODS_URL=$(curl -H "Metadata-Flavor: Google" 'http://metadata.google.internal/computeMetadata/v1/instance/attributes/factorio-mods-url')
+
+cd /home/factorio
+docker build . -t local/factorio-headless
 
 docker run -d \
-    -p 34197:34197/udp \
-    -p 27015:27015/tcp \
-    -v /home/factorio:/factorio \
+    --rm \
     --name factorio \
-    --restart=always \
-    factoriotools/factorio
+    -p 34197:34197 \
+    local/factorio-headless
