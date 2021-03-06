@@ -33,7 +33,7 @@ docker build . -t local/factorio-headless
 export FACTORIO_MODS_URL=$(curl -H "Metadata-Flavor: Google" 'http://metadata.google.internal/computeMetadata/v1/instance/attributes/factorio-mods-url')
 wget -O mods.zip ${FACTORIO_MODS_URL}
 mkdir mods
-unzip mods.zip -d mods
+docker run --rm -v $PWD:/workspace busybox unzip /workspace/mods.zip -d /workspace/mods
 
 docker run -d \
     --rm \
