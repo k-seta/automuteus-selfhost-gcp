@@ -39,5 +39,4 @@ docker run -d \
     --rm \
     --name factorio-headless \
     -p 34197:34197/udp \
-    -v /home/docker-factorio/mods:/mods \
     local/factorio-headless
