@@ -25,15 +25,19 @@ docker run -d \
 
 # factorio
 cd /home
-git clone https://github.com/k-seta/factorio.git
+git clone https://github.com/k-seta/docker-factorio.git
 
-export MODS_URL=$(curl -H "Metadata-Flavor: Google" 'http://metadata.google.internal/computeMetadata/v1/instance/attributes/factorio-mods-url')
-
-cd /home/factorio
+cd /home/docker-factorio
 docker build . -t local/factorio-headless
+
+export FACTORIO_MODS_URL=$(curl -H "Metadata-Flavor: Google" 'http://metadata.google.internal/computeMetadata/v1/instance/attributes/factorio-mods-url')
+wget -O mods.zip ${FACTORIO_MODS_URL}
+mkdir mods
+unzip mods.zip -d mods
 
 docker run -d \
     --rm \
-    --name factorio \
+    --name factorio-headless \
     -p 34197:34197 \
+    -v /home/factorio/mods:/mods
     local/factorio-headless
