@@ -14,10 +14,21 @@ resource "google_compute_firewall" "allow_http" {
   name    = "allow-http-rule"
   network = "default"
   allow {
-    ports    = ["80"]
+    ports    = ["80", "27015"]
     protocol = "tcp"
   }
   target_tags = ["allow-http"]
+  priority    = 1000
+}
+
+resource "google_compute_firewall" "allow_udp" {
+  name    = "allow-udp-rule"
+  network = "default"
+  allow {
+    ports    = ["34197"]
+    protocol = "udp"
+  }
+  target_tags = ["allow-udp"]
   priority    = 1000
 }
 
@@ -25,7 +36,7 @@ resource "google_compute_instance" "default" {
   name         = "automuteus"
   machine_type = "f1-micro"
 
-  tags = ["allow-http"]
+  tags = ["allow-http", "allow-udp"]
 
   boot_disk {
     initialize_params {
