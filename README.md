@@ -30,6 +30,3 @@ life cycle: delete, num_newer_versions = 5
 
 ### For AutoMuteUs
 1. Discord Developer Portal で AutoMuteUs をセルフホスティングするための Bot を作成し、Bot の Token を GitHub の `Settings > Secrets` に `TF_VAR_DISCORD_BOT_TOKEN` として登録します。
-
-### For factorio
-1. factorio の user と token を GitHub の `Settings > Secrets` に `TF_VAR_FACTORIO_USER` と `TF_VAR_FACTORIO_TOKEN` として登録します。

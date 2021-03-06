@@ -27,15 +27,10 @@ docker run -d \
 sleep 30; mkdir -p /home/factorio
 chown -R 845:845 /home/factorio
 
-export FACTORIO_USER=$(curl -H "Metadata-Flavor: Google" 'http://metadata.google.internal/computeMetadata/v1/instance/attributes/factorio-user')
-export FACTORIO_TOKEN=$(curl -H "Metadata-Flavor: Google" 'http://metadata.google.internal/computeMetadata/v1/instance/attributes/factorio-token')
-
 docker run -d \
     -p 34197:34197/udp \
     -p 27015:27015/tcp \
     -v /home/factorio:/factorio \
-    -e USERNAME=${FACTORIO_USER} \
-    -e TOKEN=${FACTORIO_TOKEN} \
     --name factorio \
     --restart=always \
     factoriotools/factorio
