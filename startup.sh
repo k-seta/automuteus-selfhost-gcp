@@ -38,6 +38,6 @@ unzip mods.zip -d mods
 docker run -d \
     --rm \
     --name factorio-headless \
-    -p 34197:34197 \
+    -p 34197:34197/udp \
     -v /home/factorio/mods:/mods
     local/factorio-headless
