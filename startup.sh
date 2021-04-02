@@ -10,7 +10,7 @@ export EXTERNAL_IP=$(curl -H "Metadata-Flavor: Google" 'http://metadata.google.i
 export DISCORD_BOT_TOKEN=$(curl -H "Metadata-Flavor: Google" 'http://metadata.google.internal/computeMetadata/v1/instance/attributes/discord-bot-token')
 
 cp sample.env .env
-sed -i -e 's/AUTOMUTEUS_TAG=/AUTOMUTEUS_TAG=6.11.0/g' .env
+sed -i -e 's/AUTOMUTEUS_TAG=/AUTOMUTEUS_TAG=6.12.1/g' .env
 sed -i -e 's/GALACTUS_TAG=/GALACTUS_TAG=2.4.1/g' .env
 sed -i -e "s/GALACTUS_HOST=/GALACTUS_HOST=http:\/\/${EXTERNAL_IP}/g" .env
 sed -i -e 's/GALACTUS_EXTERNAL_PORT=/GALACTUS_EXTERNAL_PORT=80/g' .env
