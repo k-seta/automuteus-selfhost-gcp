@@ -23,7 +23,7 @@ resource "google_compute_firewall" "allow_http" {
 
 resource "google_compute_instance" "default" {
   name         = "automuteus"
-  machine_type = "f1-micro"
+  machine_type = "e2-micro"
 
   tags = ["allow-http"]
 
